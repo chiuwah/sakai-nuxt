@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/tailwind.css', '~/assets/styles.scss'],
-  modules: ['@primevue/nuxt-module'],
+  modules: ['@primevue/nuxt-module', '@pinia/nuxt'],
   postcss: {
     plugins: {
       tailwindcss: {},

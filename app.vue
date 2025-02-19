@@ -5,3 +5,8 @@
     </NuxtLayout>
   </div>
 </template>
+
+<script setup>
+const store = useStore()
+await store.fetchData()
+</script>
