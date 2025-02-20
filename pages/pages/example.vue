@@ -61,7 +61,7 @@
           type="button"
           label="Cancel"
           severity="secondary"
-          @click="visible = false"
+          @click="visible.new = false"
         ></Button>
         <Button type="button" label="Save" @click="addNewProduct"></Button>
       </div>
@@ -86,7 +86,7 @@
           type="button"
           label="Cancel"
           severity="secondary"
-          @click="visible = false"
+          @click="visible.delete = false"
         ></Button>
         <Button
           type="button"
@@ -122,7 +122,7 @@ const addNewProduct = async () => {
   console.log()
   await store.addProduct(newProduct.value)
   newProduct.value = { title: '', price: '' }
-  visible.value = false
+  visible.value.new = false
 }
 
 const deleteSelectedProducts = async () => {
