@@ -1,6 +1,13 @@
 <script setup>
-import FloatingConfigurator from '@/components/FloatingConfigurator.vue'
+definePageMeta({
+  layout: 'empty',
+})
 import { ref } from 'vue'
+
+const userStore = useUserStore()
+const login = async () => {
+  await userStore.login(email.value, password.value)
+}
 
 const email = ref('')
 const password = ref('')
@@ -8,7 +15,6 @@ const checked = ref(false)
 </script>
 
 <template>
-  <FloatingConfigurator />
   <div
     class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden"
   >
@@ -25,15 +31,15 @@ const checked = ref(false)
         "
       >
         <div
-          class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20"
+          class="w-full px-8 py-20 bg-surface-0 dark:bg-surface-900 sm:px-20"
           style="border-radius: 53px"
         >
-          <div class="text-center mb-8">
+          <div class="mb-8 text-center">
             <svg
               viewBox="0 0 54 40"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="mb-8 w-16 shrink-0 mx-auto"
+              class="w-16 mx-auto mb-8 shrink-0"
             >
               <path
                 fill-rule="evenodd"
@@ -63,11 +69,11 @@ const checked = ref(false)
               </g>
             </svg>
             <div
-              class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4"
+              class="mb-4 text-3xl font-medium text-surface-900 dark:text-surface-0"
             >
               Welcome to PrimeLand!
             </div>
-            <span class="text-muted-color font-medium"
+            <span class="font-medium text-muted-color"
               >Sign in to continue</span
             >
           </div>
@@ -75,7 +81,7 @@ const checked = ref(false)
           <div>
             <label
               for="email1"
-              class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2"
+              class="block mb-2 text-xl font-medium text-surface-900 dark:text-surface-0"
               >Email</label
             >
             <InputText
@@ -88,7 +94,7 @@ const checked = ref(false)
 
             <label
               for="password1"
-              class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2"
+              class="block mb-2 text-xl font-medium text-surface-900 dark:text-surface-0"
               >Password</label
             >
             <Password
@@ -101,7 +107,7 @@ const checked = ref(false)
               :feedback="false"
             ></Password>
 
-            <div class="flex items-center justify-between mt-2 mb-8 gap-8">
+            <div class="flex items-center justify-between gap-8 mt-2 mb-8">
               <div class="flex items-center">
                 <Checkbox
                   v-model="checked"
@@ -112,16 +118,11 @@ const checked = ref(false)
                 <label for="rememberme1">Remember me</label>
               </div>
               <span
-                class="font-medium no-underline ml-2 text-right cursor-pointer text-primary"
+                class="ml-2 font-medium text-right no-underline cursor-pointer text-primary"
                 >Forgot password?</span
               >
             </div>
-            <Button
-              label="Sign In"
-              class="w-full"
-              as="nuxt-link"
-              to="/"
-            ></Button>
+            <Button label="Sign In" class="w-full" @click="login"></Button>
           </div>
         </div>
       </div>

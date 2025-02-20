@@ -92,7 +92,7 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
         <i class="pi pi-ellipsis-v"></i>
       </button>
 
-      <div class="layout-topbar-menu hidden lg:block">
+      <div class="hidden layout-topbar-menu lg:block">
         <div class="layout-topbar-menu-content">
           <button type="button" class="layout-topbar-action">
             <i class="pi pi-calendar"></i>
@@ -102,10 +102,12 @@ const { toggleMenu, toggleDarkMode, isDarkTheme } = useLayout()
             <i class="pi pi-inbox"></i>
             <span>Messages</span>
           </button>
-          <button type="button" class="layout-topbar-action">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
-          </button>
+          <nuxt-link to="/auth/login">
+            <button type="button" class="layout-topbar-action">
+              <i class="pi pi-user"></i>
+              <span>Profile</span>
+            </button>
+          </nuxt-link>
         </div>
       </div>
     </div>
