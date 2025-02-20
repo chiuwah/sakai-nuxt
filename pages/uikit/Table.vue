@@ -1,6 +1,6 @@
 <script setup>
-import { CustomerService } from '@/service/CustomerService';
-import { ProductService } from '@/service/ProductService';
+// import { CustomerService } from '@/service/CustomerService';
+// import { ProductService } from '@/service/ProductService';
 import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
 import { onBeforeMount, reactive, ref } from 'vue';
 
@@ -143,7 +143,7 @@ function calculateCustomerTotal(name) {
 
 <template>
     <div class="card">
-        <div class="font-semibold text-xl mb-4">Filtering</div>
+        <div class="mb-4 text-xl font-semibold">Filtering</div>
         <DataTable
             :value="customers1"
             :paginator="true"
@@ -266,7 +266,7 @@ function calculateCustomerTotal(name) {
     </div>
 
     <div class="card">
-        <div class="font-semibold text-xl mb-4">Frozen Columns</div>
+        <div class="mb-4 text-xl font-semibold">Frozen Columns</div>
         <ToggleButton v-model="balanceFrozen" onIcon="pi pi-lock" offIcon="pi pi-lock-open" onLabel="Balance" offLabel="Balance" />
 
         <DataTable :value="customers2" scrollable scrollHeight="400px" class="mt-6">
@@ -288,7 +288,7 @@ function calculateCustomerTotal(name) {
     </div>
 
     <div class="card">
-        <div class="font-semibold text-xl mb-4">Row Expansion</div>
+        <div class="mb-4 text-xl font-semibold">Row Expansion</div>
         <DataTable v-model:expandedRows="expandedRows" :value="products" dataKey="id" tableStyle="min-width: 60rem">
             <template #header>
                 <div class="flex flex-wrap justify-end gap-2">
@@ -348,7 +348,7 @@ function calculateCustomerTotal(name) {
     </div>
 
     <div class="card">
-        <div class="font-semibold text-xl mb-4">Grouping</div>
+        <div class="mb-4 text-xl font-semibold">Grouping</div>
         <DataTable :value="customers3" rowGroupMode="subheader" groupRowsBy="representative.name" sortMode="single" sortField="representative.name" :sortOrder="1" scrollable scrollHeight="400px" tableStyle="min-width: 50rem">
             <template #groupheader="slotProps">
                 <div class="flex items-center gap-2">
@@ -374,7 +374,7 @@ function calculateCustomerTotal(name) {
             </Column>
             <Column field="date" header="Date" style="min-width: 200px"></Column>
             <template #groupfooter="slotProps">
-                <div class="flex justify-end font-bold w-full">Total Customers: {{ calculateCustomerTotal(slotProps.data.representative.name) }}</div>
+                <div class="flex justify-end w-full font-bold">Total Customers: {{ calculateCustomerTotal(slotProps.data.representative.name) }}</div>
             </template>
         </DataTable>
     </div>
