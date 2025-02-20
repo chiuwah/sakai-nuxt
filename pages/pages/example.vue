@@ -92,7 +92,7 @@
           type="button"
           severity="danger"
           label="Delete"
-          @click="addNewProduct"
+          @click="deleteSelectedProducts"
         ></Button>
       </div>
     </Dialog>
@@ -114,12 +114,8 @@ const openNew = () => {
   visible.value.new = true
 }
 
-const confirmDeleteSelected = async () => {
+const confirmDeleteSelected = () => {
   visible.value.delete = true
-  if (selectedProducts.value && selectedProducts.value.length) {
-    await store.deleteProducts(selectedProducts.value)
-  }
-  visible.value.delete = false
 }
 
 const addNewProduct = async () => {
@@ -127,5 +123,11 @@ const addNewProduct = async () => {
   await store.addProduct(newProduct.value)
   newProduct.value = { title: '', price: '' }
   visible.value = false
+}
+
+const deleteSelectedProducts = async () => {
+  await store.deleteProducts(selectedProducts.value)
+  selectedProducts.value = null
+  visible.value.delete = false
 }
 </script>

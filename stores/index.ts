@@ -31,8 +31,13 @@ export const useStore = defineStore('store', () => {
     )
   }
 
-  async function deleteProduct(id: number) {
-    const response = await axios.delete(`https://dummyjson.com/products/${id}`)
+  async function deleteProducts(products: Product[]) {
+    for (const { id } of products) {
+      const response = await axios.delete(
+        `https://dummyjson.com/products/${id}`,
+      )
+      console.log(response.data)
+    }
   }
 
   return {
@@ -40,6 +45,6 @@ export const useStore = defineStore('store', () => {
     fetchData,
     addProduct,
     updateProduct,
-    deleteProduct,
+    deleteProducts,
   }
 })
